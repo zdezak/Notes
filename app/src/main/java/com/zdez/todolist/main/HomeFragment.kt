@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.zdez.todolist.R
+import com.zdez.todolist.databinding.HomeFragmentBinding
 
 class HomeFragment : Fragment() {
 
@@ -20,13 +21,9 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.home_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+        val binding = HomeFragmentBinding.inflate(inflater)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding.viewModel = viewModel
+        return binding.root
     }
-
 }
