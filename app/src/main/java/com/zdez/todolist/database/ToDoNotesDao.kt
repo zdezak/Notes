@@ -15,4 +15,7 @@ interface ToDoNotesDao {
 
     @Query("Delete FROM ToDoNotes  WHERE noteId = :key")
     fun deleteNotes(key: Long)
+
+    @Query("SELECT * FROM ToDoNotes ORDER BY noteId DESC LIMIT 1")
+    suspend fun getTonotes(): TodoNotes?
 }
