@@ -6,23 +6,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.zdez.todolist.R
-import com.zdez.todolist.databinding.HomeFragmentBinding
+import com.zdez.todolist.databinding.MainFragmentBinding
 
-class HomeFragment : Fragment() {
+class MainFragment : Fragment() {
 
     companion object {
-        fun newInstance() = HomeFragment()
+        fun newInstance() = MainFragment()
     }
 
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = HomeFragmentBinding.inflate(inflater)
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        val binding = MainFragmentBinding.inflate(inflater)
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.viewModel = viewModel
         return binding.root
     }
