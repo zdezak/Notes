@@ -1,11 +1,12 @@
 package com.zdez.todolist.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.zdez.todolist.database.NotesDatabase
 import com.zdez.todolist.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
@@ -14,15 +15,19 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val application = requireNotNull(this.activity).application
+        val dataSource = NotesDatabase.getInstance(application).notesDao
+        val viewModelFactory = MainViewModelFactory(dataSource, application)
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+
         val binding = MainFragmentBinding.inflate(inflater)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         return binding.root
     }
 }
