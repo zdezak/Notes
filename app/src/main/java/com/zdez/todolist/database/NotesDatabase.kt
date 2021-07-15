@@ -11,23 +11,22 @@ abstract class NotesDatabase: RoomDatabase() {
     companion object{
         @Volatile
         private var INSTANCE: NotesDatabase? = null
-    }
-
-    fun getInstance(context: Context): NotesDatabase{
-        synchronized(this){
-            var instance = INSTANCE
-            if(instance == null){
-                instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    NotesDatabase::class.java,
-                    "Notes"
-                )
-                    .fallbackToDestructiveMigration()
-                    .build()
-                INSTANCE = instance
+        fun getInstance(context: Context): NotesDatabase{
+            synchronized(this){
+                var instance = INSTANCE
+                if(instance == null){
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        NotesDatabase::class.java,
+                        "Notes"
+                    )
+                        .fallbackToDestructiveMigration()
+                        .build()
+                    INSTANCE = instance
+                }
+                return instance
             }
-            return instance
-        }
 
+        }
     }
 }

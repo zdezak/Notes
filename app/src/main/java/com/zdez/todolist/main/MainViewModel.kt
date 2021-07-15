@@ -1,7 +1,13 @@
 package com.zdez.todolist.main
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import com.zdez.todolist.database.Note
+import com.zdez.todolist.database.NotesDao
 
-class MainViewModel : ViewModel() {
-    val text = "Hello World"
+class MainViewModel(val database: NotesDao, application: Application) :
+    AndroidViewModel(application) {
+    private val toNote = MutableLiveData<Note?>()
+    private val notes = database.getAllNotes()
 }
