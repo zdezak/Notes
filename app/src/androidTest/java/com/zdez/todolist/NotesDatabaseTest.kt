@@ -4,8 +4,8 @@ import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.zdez.todolist.database.NotesDatabase
-import com.zdez.todolist.database.ToDoNotesDao
-import com.zdez.todolist.database.TodoNotes
+import com.zdez.todolist.database.NotesDao
+import com.zdez.todolist.database.Note
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -17,7 +17,7 @@ import java.io.IOException
 @RunWith(AndroidJUnit4::class)
 class NotesDatabaseTest {
 
-    private lateinit var noteDao: ToDoNotesDao
+    private lateinit var noteDao: NotesDao
     private lateinit var db: NotesDatabase
     @Before
     fun createDb() {
@@ -28,7 +28,7 @@ class NotesDatabaseTest {
             // Allowing main thread queries, just for testing.
             .allowMainThreadQueries()
             .build()
-        noteDao = db.toDoNotesDao
+        noteDao = db.notesDao
     }
 
     @After
@@ -40,9 +40,9 @@ class NotesDatabaseTest {
     @Test
     @Throws(Exception::class)
     suspend fun insertAndGetNight() {
-        val note = TodoNotes()
+        val note = Note()
         noteDao.insert(note)
-        val tonote = noteDao.getTonotes()
+        val tonote = noteDao.getToNote()
         assertEquals(tonote?.title, "")
     }
 }

@@ -1,4 +1,4 @@
-package com.zdez.todolist.add
+package com.zdez.todolist.edit
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.zdez.todolist.R
 
-class add : Fragment() {
+class EditFragment : Fragment() {
 
     companion object {
-        fun newInstance() = add()
+        fun newInstance() = EditFragment()
     }
 
-    private lateinit var viewModel: AddViewModel
+    private lateinit var viewModel: EditViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.add_fragment, container, false)
+        return inflater.inflate(R.layout.edit_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AddViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(EditViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

@@ -4,8 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "ToDoNotes")
-data class TodoNotes(
+@Entity(tableName = "Notes")
+data class Note(
     @PrimaryKey(autoGenerate = true)
     val noteId: Long = 0L,
 
