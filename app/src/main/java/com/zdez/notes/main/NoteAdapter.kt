@@ -1,8 +1,9 @@
-package com.zdez.todolist.main
+/*
+package com.zdez.notes.main
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.zdez.todolist.database.Note
+import com.zdez.notes.database.Note
 
 class NoteAdapter: RecyclerView.Adapter<TextItemViewHolder>() {
     val data = listOf<Note>()
@@ -15,4 +16,4 @@ class NoteAdapter: RecyclerView.Adapter<TextItemViewHolder>() {
     }
 
     override fun getItemCount() = data.size
-}
+}*/

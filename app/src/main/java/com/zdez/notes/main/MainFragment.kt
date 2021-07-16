@@ -1,13 +1,16 @@
-package com.zdez.todolist.main
+package com.zdez.notes.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.zdez.todolist.database.NotesDatabase
-import com.zdez.todolist.databinding.MainFragmentBinding
+import androidx.navigation.Navigation
+import com.zdez.notes.R
+import com.zdez.notes.database.NotesDatabase
+import com.zdez.notes.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
 
@@ -25,7 +28,11 @@ class MainFragment : Fragment() {
         val viewModelFactory = MainViewModelFactory(dataSource, application)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
-        val binding = MainFragmentBinding.inflate(inflater)
+        val binding: MainFragmentBinding =
+            DataBindingUtil.inflate(inflater, R.id.mainFragment, container, false)
+        binding.addButton.setOnClickListener{view:View->
+            Navigation.findNavController(view)
+        }
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root
