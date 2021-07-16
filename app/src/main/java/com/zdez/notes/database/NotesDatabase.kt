@@ -1,4 +1,4 @@
-package com.zdez.todolist.database
+package com.zdez.notes.database
 
 import android.content.Context
 import androidx.room.Database

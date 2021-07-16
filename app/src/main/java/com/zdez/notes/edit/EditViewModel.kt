@@ -1,7 +1,7 @@
-package com.zdez.todolist.add
+package com.zdez.notes.edit
 
 import androidx.lifecycle.ViewModel
 
-class AddViewModel : ViewModel() {
+class EditViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

@@ -1,8 +1,8 @@
-package com.zdez.todolist
+package com.zdez.notes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.zdez.todolist.main.MainFragment
+import com.zdez.notes.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
