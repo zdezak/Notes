@@ -1,21 +1,20 @@
-package com.zdez.notes.main
+package com.zdez.todolist.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.zdez.notes.adapter.NoteAdapter
-import com.zdez.notes.database.NotesDatabase
-import com.zdez.notes.databinding.MainFragmentBinding
+import com.zdez.todolist.database.NotesDatabase
+import com.zdez.todolist.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment()
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,21 +27,7 @@ class MainFragment : Fragment() {
 
         val binding = MainFragmentBinding.inflate(inflater)
         binding.viewModel = viewModel
-        val adapter = NoteAdapter()
-        binding.noteList.adapter = adapter
         binding.lifecycleOwner = this
-
-        viewModel.navigate.observe(viewLifecycleOwner, Observer { navigate ->
-            if (navigate == true) {
-                //this.findNavController().navigate()
-                viewModel.navigateDone()
-            }
-        })
-        viewModel.notes.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                adapter.data = it
-            }
-        })
         return binding.root
     }
 }
