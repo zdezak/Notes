@@ -2,6 +2,7 @@ package com.zdez.todolist.main
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.zdez.todolist.database.Note
 
 class NoteAdapter: RecyclerView.Adapter<TextItemViewHolder>() {
     val data = listOf<Note>()
