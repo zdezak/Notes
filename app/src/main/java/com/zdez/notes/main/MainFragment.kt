@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.zdez.notes.R
 import com.zdez.notes.database.NotesDatabase
 import com.zdez.notes.databinding.MainFragmentBinding
@@ -29,8 +30,8 @@ class MainFragment : Fragment() {
         val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         val binding = MainFragmentBinding.inflate(inflater,container, false)
-        binding.addButton.setOnClickListener{view:View->
-            Navigation.findNavController(view)
+        binding.addButton.setOnClickListener{
+            this.findNavController().navigate(R.id.action_mainFragment_to_addFragment)
         }
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
