@@ -28,8 +28,7 @@ class MainFragment : Fragment() {
         val viewModelFactory = MainViewModelFactory(dataSource, application)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
-        val binding: MainFragmentBinding =
-            DataBindingUtil.inflate(inflater, R.id.mainFragment, container, false)
+        val binding = MainFragmentBinding.inflate(inflater,container, false)
         binding.addButton.setOnClickListener{view:View->
             Navigation.findNavController(view)
         }

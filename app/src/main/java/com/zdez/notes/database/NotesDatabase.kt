@@ -12,21 +12,21 @@ abstract class NotesDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: NotesDatabase? = null
         fun getInstance(context: Context): NotesDatabase{
-            synchronized(this){
+            synchronized(this) {
                 var instance = INSTANCE
-                if(instance == null){
+                if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         NotesDatabase::class.java,
-                        "Notes"
+                        "notes"
                     )
                         .fallbackToDestructiveMigration()
                         .build()
                     INSTANCE = instance
                 }
+                // Return instance; smart cast to be non-null.
                 return instance
             }
-
         }
     }
 }
