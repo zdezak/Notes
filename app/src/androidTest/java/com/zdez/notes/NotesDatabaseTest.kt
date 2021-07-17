@@ -39,10 +39,11 @@ class NotesDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    suspend fun insertAndGetNight() {
+    suspend fun insertAndGetNotes() {
         val note = Note()
+        note.title = "Hello"
         noteDao.insert(note)
-        val tonote = noteDao.getToNote()
-        assertEquals(tonote?.title, "")
+        val toNote = noteDao.getToNote()
+        assertEquals(toNote?.title, "Hello")
     }
 }
