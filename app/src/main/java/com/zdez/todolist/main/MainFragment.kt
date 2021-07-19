@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.zdez.todolist.adapter.NoteAdapter
 import com.zdez.todolist.database.NotesDatabase
 import com.zdez.todolist.databinding.MainFragmentBinding
 
@@ -27,7 +29,15 @@ class MainFragment : Fragment() {
 
         val binding = MainFragmentBinding.inflate(inflater)
         binding.viewModel = viewModel
+        val adapter = NoteAdapter()
+        binding.noteList.adapter = adapter
         binding.lifecycleOwner = this
+
+        viewModel.notes.observe(viewLifecycleOwner, {
+            it?.let {
+                adapter.data = it
+            }
+        })
         return binding.root
     }
 }
