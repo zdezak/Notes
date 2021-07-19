@@ -33,7 +33,7 @@ class MainFragment : Fragment() {
         binding.noteList.adapter = adapter
         binding.lifecycleOwner = this
 
-        viewModel.notes.observe(viewLifecycleOwner, {
+        viewModel.notes.observe(viewLifecycleOwner, Observer{
             it?.let {
                 adapter.data = it
             }
