@@ -20,7 +20,11 @@
         android:id="@+id/addFragment"
         android:name="com.zdez.notes.add.AddFragment"
         android:label="add_fragment"
-        tools:layout="@layout/add_fragment" />
+        tools:layout="@layout/add_fragment" >
+        <action
+            android:id="@+id/action_addFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editFragment"
         android:name="com.zdez.notes.edit.EditFragment"

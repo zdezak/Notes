@@ -7,12 +7,11 @@ import com.zdez.notes.database.NotesDao
 import java.lang.IllegalArgumentException
 
 class AddViewModelFactory(
-    private val database: NotesDao,
-    private val application: Application): ViewModelProvider.Factory {
+    private val database: NotesDao): ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(AddViewModel::class.java)){
-            return AddViewModel(database,application) as T
+            return AddViewModel(database) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

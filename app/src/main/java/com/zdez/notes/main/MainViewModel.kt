@@ -9,5 +9,6 @@ import com.zdez.notes.database.NotesDao
 class MainViewModel(val database: NotesDao, application: Application) :
     AndroidViewModel(application) {
     private val toNote = MutableLiveData<Note?>()
-    private val notes = database.getAllNotes()
+    val notes = database.getAllNotes()
+
 }
