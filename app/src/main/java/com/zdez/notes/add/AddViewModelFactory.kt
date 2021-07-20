@@ -1,9 +1,9 @@
-package com.zdez.todolist.add
+package com.zdez.notes.add
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.zdez.todolist.database.NotesDao
+import com.zdez.notes.database.NotesDao
 import java.lang.IllegalArgumentException
 
 class AddViewModelFactory(

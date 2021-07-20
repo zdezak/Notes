@@ -1,9 +1,9 @@
-package com.zdez.todolist.main
+package com.zdez.notes.main
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.zdez.todolist.database.NotesDao
+import com.zdez.notes.database.NotesDao
 
 class MainViewModelFactory(private val dataSource: NotesDao,
                            private val application: Application) :

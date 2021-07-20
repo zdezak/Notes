@@ -1,4 +1,4 @@
-package com.zdez.todolist
+package com.zdez.notes
 
 import org.junit.Test
 

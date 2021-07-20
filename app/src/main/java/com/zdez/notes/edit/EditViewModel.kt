@@ -1,4 +1,4 @@
-package com.zdez.todolist.edit
+package com.zdez.notes.edit
 
 import androidx.lifecycle.ViewModel
 

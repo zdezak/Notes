@@ -1,11 +1,11 @@
-package com.zdez.todolist.adapter
+package com.zdez.notes.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.zdez.todolist.R
-import com.zdez.todolist.database.Note
+import com.zdez.notes.R
+import com.zdez.notes.database.Note
 
 class NoteAdapter : RecyclerView.Adapter<TextItemViewHolder>() {
     var data = listOf<Note>()

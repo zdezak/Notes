@@ -1,4 +1,4 @@
-package com.zdez.todolist.adapter
+package com.zdez.notes.adapter
 
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView

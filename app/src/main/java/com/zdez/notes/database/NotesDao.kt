@@ -1,4 +1,4 @@
-package com.zdez.todolist.database
+package com.zdez.notes.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
