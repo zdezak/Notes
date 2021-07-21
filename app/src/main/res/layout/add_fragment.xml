@@ -24,7 +24,7 @@
             android:layout_marginBottom="16dp"
             android:gravity="center|top|center_vertical"
             android:text="Save"
-            android:onClick="@{()->viewModel.insert(note)}"
+            android:onClick="@{()->viewModel.onClickButton()}"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/title"
             app:layout_constraintEnd_toEndOf="parent"

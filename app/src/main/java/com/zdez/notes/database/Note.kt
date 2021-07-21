@@ -13,5 +13,5 @@ data class Note(
     var title: String = "",
 
     @ColumnInfo(name = "notes_text")
-    val notesText: String = ""
+    var notesText: String = ""
 )

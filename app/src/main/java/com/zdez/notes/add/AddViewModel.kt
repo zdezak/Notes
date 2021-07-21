@@ -20,11 +20,13 @@ class AddViewModel(val database: NotesDao) : ViewModel() {
     fun insert(note: Note){
         viewModelScope.launch {
             database.insert(note)
-            _navigateToNoteList.value = true
         }
 
     }
 
+    fun onClickButton(){
+        _navigateToNoteList.value = true
+    }
     fun doneNavigation() {
         _navigateToNoteList.value = false
     }

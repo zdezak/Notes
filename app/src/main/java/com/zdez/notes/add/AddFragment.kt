@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.zdez.notes.R
+import com.zdez.notes.database.Note
 import com.zdez.notes.database.NotesDatabase
 import com.zdez.notes.databinding.AddFragmentBinding
 
@@ -32,6 +33,10 @@ class AddFragment : Fragment() {
 
         viewModel.navigateToNoteList.observe(viewLifecycleOwner, Observer {
             if(it==true){
+                val note = Note()
+                note.title = binding.title.text.toString()
+                note.notesText = binding.textTodo.toString()
+                viewModel.insert(note)
                 this.findNavController().navigate(R.id.action_addFragment_to_mainFragment)
                 viewModel.doneNavigation()
             }
