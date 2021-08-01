@@ -2,8 +2,8 @@ package com.zdez.notes.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zdez.notes.database.Note
 import com.zdez.notes.databinding.MainFragmentBinding
@@ -52,5 +52,4 @@ class NoteDiffCallback : DiffUtil.ItemCallback<Note>() {
 
 class NoteListener(val clickListener: (noteId: Long) -> Unit) {
     fun onClick(note: Note) = clickListener(note.noteId)
-
 }
