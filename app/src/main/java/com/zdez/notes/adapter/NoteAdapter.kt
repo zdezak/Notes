@@ -2,28 +2,55 @@ package com.zdez.notes.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.ListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.zdez.notes.R
 import com.zdez.notes.database.Note
+import com.zdez.notes.databinding.MainFragmentBinding
 
-class NoteAdapter : RecyclerView.Adapter<TextItemViewHolder>() {
-    var data = listOf<Note>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
+class NoteAdapter(val clickListener: NoteListener) : ListAdapter<Note,
+        NoteAdapter.ViewHolder>(NoteDiffCallback()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.bind(clickListener, item)
+    }
+
+    class ViewHolder private constructor(val binding: MainFragmentBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(clickListener: NoteListener, item: Note) {
+            binding.note = item
+            binding.clickListener = clickListener
+            binding.executePendingBindings()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextItemViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.text_item_view, parent, false) as TextView
-        return TextItemViewHolder(view)
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = MainFragmentBinding.inflate(layoutInflater, parent, false)
+
+                return ViewHolder(binding)
+            }
+        }
+    }
+}
+
+class NoteDiffCallback : DiffUtil.ItemCallback<Note>() {
+    override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
+        return oldItem.noteId == newItem.noteId
     }
 
-    override fun onBindViewHolder(holder: TextItemViewHolder, position: Int) {
-        val item = data[position]
-        holder.textView.text = item.title
+    override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
+        return oldItem == newItem
     }
 
-    override fun getItemCount() = data.size
+}
+
+class NoteListener(val clickListener: (noteId: Long) -> Unit) {
+    fun onClick(note: Note) = clickListener(note.noteId)
+
 }

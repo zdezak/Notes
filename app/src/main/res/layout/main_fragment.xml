@@ -7,13 +7,20 @@
         <variable
             name="viewModel"
             type="com.zdez.notes.main.MainViewModel" />
+        <variable
+            name="clickListener"
+            type="com.zdez.notes.adapter.NoteListener" />
+        <variable
+            name="note"
+            type="com.zdez.notes.database.Note" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.MainFragment">
+        tools:context=".main.MainFragment"
+        android:onClick="@()->clickListener.onClick(note)">
 
         <Button
             android:id="@+id/add_button"

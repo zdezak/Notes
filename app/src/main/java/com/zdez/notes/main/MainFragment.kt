@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.zdez.notes.R
 import com.zdez.notes.adapter.NoteAdapter
+import com.zdez.notes.adapter.NoteListener
 import com.zdez.notes.database.NotesDatabase
 import com.zdez.notes.databinding.MainFragmentBinding
 
@@ -35,13 +37,15 @@ class MainFragment : Fragment() {
             this.findNavController().navigate(R.id.action_mainFragment_to_addFragment)
         }
         binding.viewModel = viewModel
-        val adapter = NoteAdapter()
+        val adapter = NoteAdapter(NoteListener { noteId ->
+            Toast.makeText(context, "${noteId}", Toast.LENGTH_LONG).show()
+        })
         binding.noteList.adapter = adapter
         binding.lifecycleOwner = this
 
         viewModel.notes.observe(viewLifecycleOwner, {
             it?.let {
-                adapter.data = it
+                adapter.sibmitList(it)
             }
         })
         return binding.root
