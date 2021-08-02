@@ -32,7 +32,7 @@ class MainFragment : Fragment() {
 
         val binding = MainFragmentBinding.inflate(inflater, container, false)
         binding.addButton.setOnClickListener {
-            this.findNavController().navigate(R.id.action_mainFragment_to_addFragment)
+            this.findNavController().navigate(MainFragmentDirections.actionMainFragmentToAddFragment())
         }
         binding.viewModel = viewModel
         val adapter = NoteAdapter(NoteListener { noteId ->
@@ -49,8 +49,9 @@ class MainFragment : Fragment() {
 
         viewModel.navigateToEditNote.observe(viewLifecycleOwner, Observer { note ->
             note?.let {
-                //TODO this.findNavController()
-                   // .navigate(MainFragmentDirections.actionMainFragmentToEditFragment(note))
+                //TODO Передать данные
+                this.findNavController()
+                    .navigate(MainFragmentDirections.actionMainFragmentToEditFragment())
                 viewModel.onNoteNavigated()
             }
         })

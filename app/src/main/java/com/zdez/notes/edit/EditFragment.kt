@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.zdez.notes.database.Note
 import com.zdez.notes.database.NotesDatabase
 import com.zdez.notes.databinding.EditFragmentBinding
+import com.zdez.notes.main.MainFragment
 
 class EditFragment : Fragment() {
 
@@ -30,12 +32,14 @@ class EditFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
+
         viewModel.navigateToMain.observe(viewLifecycleOwner, Observer {
             if (it == true) {
                 val note = Note()
                 note.title = binding.EditTitle.toString()
                 note.notesText = binding.EditTitle.toString()
                 viewModel.saveEditNote(note)
+                this.findNavController().navigate(EditFragmentDirections.actionEditFragmentToMainFragment())
                 viewModel.navigateCompleted()
             }
         })
