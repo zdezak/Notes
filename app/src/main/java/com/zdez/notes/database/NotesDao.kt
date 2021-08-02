@@ -12,7 +12,7 @@ interface NotesDao {
     suspend fun update(note: Note)
 
     @Query("SELECT * FROM notes  WHERE noteId = :key")
-    suspend fun getNote(key: Long):Note?
+    fun getNoteWithKey(key: Long):Note
 
     @Query("Delete FROM notes  WHERE noteId = :key")
     suspend fun deleteNotes(key: Long)

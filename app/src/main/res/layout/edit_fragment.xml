@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="com.zdez.notes.edit.EditViewModel" />
+        <variable
+            name="note"
+            type="com.zdez.notes.database.Note" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,8 +23,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Save"
-            android:onClick="@{()->viewModel.onClickNavigateButton()}"
+            android:layout_marginBottom="667dp"
+            android:onClick="@{()->viewModel.onClickNovigateButton()}"
+            android:text="@string/save_button"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +36,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Delete"
+            android:layout_marginBottom="603dp"
+            android:text="@string/delete_button"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Save_button" />
@@ -41,9 +48,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="542dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Title"
+            android:minHeight="48dp"
+            android:text="@{viewModel.note.title}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Delete_button" />
@@ -55,7 +65,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="@{viewModel.note.notesText}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
