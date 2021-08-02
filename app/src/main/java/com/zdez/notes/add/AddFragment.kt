@@ -37,7 +37,7 @@ class AddFragment : Fragment() {
                 note.title = binding.title.text.toString()
                 note.notesText = binding.textTodo.toString()
                 viewModel.insert(note)
-                this.findNavController().navigate(R.id.action_addFragment_to_mainFragment)
+                //TODO this.findNavController().navigate(R.id.action_addFragment_to_mainFragment)
                 viewModel.doneNavigation()
             }
         })
