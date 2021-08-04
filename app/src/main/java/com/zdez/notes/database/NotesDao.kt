@@ -1,7 +1,10 @@
 package com.zdez.notes.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface NotesDao {
@@ -12,7 +15,7 @@ interface NotesDao {
     suspend fun update(note: Note)
 
     @Query("SELECT * FROM notes  WHERE noteId = :key")
-    fun getNoteWithKey(key: Long):Note
+    fun getNoteWithKey(key: Long): Note
 
     @Query("Delete FROM notes  WHERE noteId = :key")
     suspend fun deleteNotes(key: Long)

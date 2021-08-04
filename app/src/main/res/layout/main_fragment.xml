@@ -3,24 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="com.zdez.notes.main.MainViewModel" />
-        <variable
-            name="clickListener"
-            type="com.zdez.notes.adapter.NoteListener" />
-        <variable
-            name="note"
-            type="com.zdez.notes.database.Note" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.MainFragment"
-        android:onClick="@{()->clickListener.onClick(note)}">
+        android:onClick="@{()->clickListener.onClick(note)}"
+        tools:context=".main.MainFragment">
 
         <Button
             android:id="@+id/add_button"
@@ -50,4 +38,19 @@
         </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.zdez.notes.main.MainViewModel" />
+
+        <variable
+            name="clickListener"
+            type="com.zdez.notes.adapter.NoteListener" />
+
+        <variable
+            name="note"
+            type="com.zdez.notes.database.Note" />
+    </data>
 </layout>

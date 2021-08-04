@@ -1,6 +1,9 @@
 package com.zdez.notes.edit
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.zdez.notes.database.Note
 import com.zdez.notes.database.NotesDao
 import kotlinx.coroutines.launch
@@ -28,9 +31,10 @@ class EditViewModel(dataSource: NotesDao, noteId: Long = 0L) : ViewModel() {
         }
     }
 
-    fun onClickNovigateButton(){
+    fun onClickNavigateButton() {
         _navigateToMain.value = true
     }
+
     fun navigateCompleted() {
         _navigateToMain.value = false
     }

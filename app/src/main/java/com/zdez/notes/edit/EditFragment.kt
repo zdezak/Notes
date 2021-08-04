@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.zdez.notes.database.Note
 import com.zdez.notes.database.NotesDatabase
 import com.zdez.notes.databinding.EditFragmentBinding
 
@@ -27,7 +26,7 @@ class EditFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = NotesDatabase.getInstance(application).notesDao
         val arguments = EditFragmentArgs.fromBundle(requireArguments())
-        val viewModelFactory = EditViewModelFactory(dataSource,arguments.note)
+        val viewModelFactory = EditViewModelFactory(dataSource, arguments.note)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(EditViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -36,7 +35,8 @@ class EditFragment : Fragment() {
         viewModel.navigateToMain.observe(viewLifecycleOwner, Observer {
             if (it == true) {
                 viewModel.saveEditNote(viewModel.getNote())
-                this.findNavController().navigate(EditFragmentDirections.actionEditFragmentToMainFragment())
+                this.findNavController()
+                    .navigate(EditFragmentDirections.actionEditFragmentToMainFragment())
                 viewModel.navigateCompleted()
             }
         })

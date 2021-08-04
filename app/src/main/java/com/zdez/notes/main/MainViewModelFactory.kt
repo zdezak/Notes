@@ -5,8 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.zdez.notes.database.NotesDao
 
-class MainViewModelFactory(private val dataSource: NotesDao,
-                           private val application: Application) :
+class MainViewModelFactory(
+    private val dataSource: NotesDao,
+    private val application: Application
+) :
     ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

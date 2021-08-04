@@ -1,14 +1,13 @@
 package com.zdez.notes.add
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.zdez.notes.R
 import com.zdez.notes.database.Note
 import com.zdez.notes.database.NotesDatabase
 import com.zdez.notes.databinding.AddFragmentBinding
@@ -32,12 +31,13 @@ class AddFragment : Fragment() {
         binding.lifecycleOwner = this
 
         viewModel.navigateToNoteList.observe(viewLifecycleOwner, Observer {
-            if(it==true){
+            if (it == true) {
                 val note = Note()
                 note.title = binding.title.text.toString()
                 note.notesText = binding.textTodo.toString()
                 viewModel.insert(note)
-                //TODO this.findNavController().navigate(R.id.action_addFragment_to_mainFragment)
+                this.findNavController()
+                    .navigate(AddFragmentDirections.actionAddFragmentToMainFragment())
                 viewModel.doneNavigation()
             }
         })

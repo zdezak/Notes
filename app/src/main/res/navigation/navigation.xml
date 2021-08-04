@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.zdez.notes.main.MainFragment"
-        android:label="MainFragment" >
+        android:label="MainFragment">
         <action
             android:id="@+id/action_mainFragment_to_addFragment"
             app:destination="@id/addFragment" />
@@ -20,7 +20,7 @@
         android:id="@+id/addFragment"
         android:name="com.zdez.notes.add.AddFragment"
         android:label="add_fragment"
-        tools:layout="@layout/add_fragment" >
+        tools:layout="@layout/add_fragment">
         <action
             android:id="@+id/action_addFragment_to_mainFragment"
             app:destination="@id/mainFragment"
@@ -31,7 +31,7 @@
         android:id="@+id/editFragment"
         android:name="com.zdez.notes.edit.EditFragment"
         android:label="edit_fragment"
-        tools:layout="@layout/edit_fragment" >
+        tools:layout="@layout/edit_fragment">
         <action
             android:id="@+id/action_editFragment_to_mainFragment"
             app:destination="@id/mainFragment"
