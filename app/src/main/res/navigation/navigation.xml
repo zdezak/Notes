@@ -24,7 +24,6 @@
         <action
             android:id="@+id/action_addFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:launchSingleTop="false"
             app:popUpTo="@id/mainFragment" />
     </fragment>
     <fragment
@@ -35,7 +34,6 @@
         <action
             android:id="@+id/action_editFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:launchSingleTop="false"
             app:popUpTo="@id/mainFragment" />
         <argument
             android:name="note"
