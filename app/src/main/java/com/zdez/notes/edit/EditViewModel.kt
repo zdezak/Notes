@@ -10,15 +10,19 @@ class EditViewModel(dataSource: NotesDao, noteId: Long = 0L) : ViewModel() {
     val database = dataSource
 
     private var viewModelJob = Job()
-    private val _navigateToMain = MutableLiveData<Boolean>()
-    val navigateToMain: LiveData<Boolean>
-        get() = _navigateToMain
+    private val _navigateToMainOnSave = MutableLiveData<Boolean>()
+    val navigateToMainOnSave: LiveData<Boolean>
+        get() = _navigateToMainOnSave
 
+    private val _navigateToMainOnDelete = MutableLiveData<Boolean>()
+    val navigateToMainOnDelete: LiveData<Boolean>
+        get() = _navigateToMainOnDelete
     private val note = database.getNoteWithKey(noteId)
 
 
     init {
-        _navigateToMain.value = false
+        _navigateToMainOnSave.value = false
+        _navigateToMainOnDelete.value = false
     }
 
     fun getNote() = note
@@ -30,11 +34,22 @@ class EditViewModel(dataSource: NotesDao, noteId: Long = 0L) : ViewModel() {
         }
     }
 
-    fun onClickNavigateButton() {
-        _navigateToMain.value = true
+    fun onClickSaveButton() {
+        _navigateToMainOnSave.value = true
     }
 
     fun navigateCompleted() {
-        _navigateToMain.value = false
+        _navigateToMainOnSave.value = false
+        _navigateToMainOnDelete.value = false
+    }
+
+    fun onClickDeleteButton(){
+        _navigateToMainOnDelete.value = true
+    }
+
+    fun deleteNote(id: Long){
+        viewModelScope.launch {
+            database.deleteNotes(id)
+        }
     }
 }

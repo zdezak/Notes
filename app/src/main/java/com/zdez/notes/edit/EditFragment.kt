@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.zdez.notes.database.NotesDatabase
 import com.zdez.notes.databinding.EditFragmentBinding
-import kotlinx.coroutines.Job
 
 class EditFragment : Fragment() {
 
@@ -33,9 +32,17 @@ class EditFragment : Fragment() {
         binding.lifecycleOwner = this
 
 
-        viewModel.navigateToMain.observe(viewLifecycleOwner, Observer {
-            if (it == true) {
+        viewModel.navigateToMainOnSave.observe(viewLifecycleOwner, Observer {onSave->
+            if (onSave == true) {
                 viewModel.saveEditNote(viewModel.getNote())
+                this.findNavController()
+                    .navigate(EditFragmentDirections.actionEditFragmentToMainFragment())
+                viewModel.navigateCompleted()
+            }
+        })
+        viewModel.navigateToMainOnDelete.observe(viewLifecycleOwner, Observer { onDelete->
+            if (onDelete == true){
+                viewModel.deleteNote(viewModel.getNote().noteId)
                 this.findNavController()
                     .navigate(EditFragmentDirections.actionEditFragmentToMainFragment())
                 viewModel.navigateCompleted()
