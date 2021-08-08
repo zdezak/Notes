@@ -17,6 +17,8 @@ class EditViewModel(dataSource: NotesDao, noteId: Long = 0L) : ViewModel() {
     private val _navigateToMainOnDelete = MutableLiveData<Boolean>()
     val navigateToMainOnDelete: LiveData<Boolean>
         get() = _navigateToMainOnDelete
+
+
     private val note = database.getNoteWithKey(noteId)
 
 

@@ -34,7 +34,7 @@ class EditFragment : Fragment() {
 
         viewModel.navigateToMainOnSave.observe(viewLifecycleOwner, Observer {onSave->
             if (onSave == true) {
-                viewModel.saveEditNote(viewModel.getNote())
+                viewModel.saveEditNote(viewModel.getNote().value!!)
                 this.findNavController()
                     .navigate(EditFragmentDirections.actionEditFragmentToMainFragment())
                 viewModel.navigateCompleted()
@@ -42,7 +42,7 @@ class EditFragment : Fragment() {
         })
         viewModel.navigateToMainOnDelete.observe(viewLifecycleOwner, Observer { onDelete->
             if (onDelete == true){
-                viewModel.deleteNote(viewModel.getNote().noteId)
+                viewModel.deleteNote(viewModel.getNote().value!!.noteId)
                 this.findNavController()
                     .navigate(EditFragmentDirections.actionEditFragmentToMainFragment())
                 viewModel.navigateCompleted()
