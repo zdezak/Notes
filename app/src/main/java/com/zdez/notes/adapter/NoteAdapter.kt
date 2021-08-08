@@ -2,11 +2,12 @@ package com.zdez.notes.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.NonNull
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zdez.notes.database.Note
-import com.zdez.notes.databinding.MainFragmentBinding
+import com.zdez.notes.databinding.TextItemViewBinding
 
 class NoteAdapter(val clickListener: NoteListener) : ListAdapter<Note,
         NoteAdapter.ViewHolder>(NoteDiffCallback()) {
@@ -19,7 +20,7 @@ class NoteAdapter(val clickListener: NoteListener) : ListAdapter<Note,
         holder.bind(clickListener, item)
     }
 
-    class ViewHolder private constructor(val binding: MainFragmentBinding) :
+    class ViewHolder private constructor(val binding: TextItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(clickListener: NoteListener, item: Note) {
@@ -31,7 +32,7 @@ class NoteAdapter(val clickListener: NoteListener) : ListAdapter<Note,
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = MainFragmentBinding.inflate(layoutInflater, parent, false)
+                val binding = TextItemViewBinding.inflate(layoutInflater, parent, false)
 
                 return ViewHolder(binding)
             }

@@ -6,10 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zdez.notes.database.Note
 import com.zdez.notes.database.NotesDao
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class AddViewModel(val database: NotesDao) : ViewModel() {
     val note = Note()
+    private var viewModelJob = Job()
     private val _navigateToNoteList = MutableLiveData<Boolean>()
     val navigateToNoteList: LiveData<Boolean>
         get() = _navigateToNoteList

@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.zdez.notes.database.NotesDatabase
 import com.zdez.notes.databinding.EditFragmentBinding
+import kotlinx.coroutines.Job
 
 class EditFragment : Fragment() {
 
