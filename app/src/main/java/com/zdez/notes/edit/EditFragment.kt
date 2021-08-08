@@ -34,6 +34,9 @@ class EditFragment : Fragment() {
 
         viewModel.navigateToMainOnSave.observe(viewLifecycleOwner, Observer {onSave->
             if (onSave == true) {
+                val title = binding.EditTitle.text.toString()
+                val noteText  = binding.EditTextNote.text.toString()
+                viewModel.updateNote(title, noteText)
                 viewModel.saveEditNote(viewModel.getNote().value!!)
                 this.findNavController()
                     .navigate(EditFragmentDirections.actionEditFragmentToMainFragment())

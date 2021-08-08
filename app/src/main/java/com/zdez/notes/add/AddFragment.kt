@@ -34,7 +34,7 @@ class AddFragment : Fragment() {
             if (it == true) {
                 val note = Note()
                 note.title = binding.title.text.toString()
-                note.notesText = binding.textTodo.toString()
+                note.notesText = binding.textTodo.text.toString()
                 viewModel.insert(note)
                 this.findNavController().navigate(AddFragmentDirections.actionAddFragmentToMainFragment())
                 viewModel.doneNavigation()

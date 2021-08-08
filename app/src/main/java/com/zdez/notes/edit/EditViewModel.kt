@@ -29,6 +29,11 @@ class EditViewModel(dataSource: NotesDao, noteId: Long = 0L) : ViewModel() {
 
     fun getNote() = note
 
+    fun updateNote(title: String, noteText: String){
+        note.value!!.title = title
+        note.value!!.notesText = noteText
+    }
+
 
     fun saveEditNote(note: Note) {
         viewModelScope.launch {
