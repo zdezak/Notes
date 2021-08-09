@@ -1,11 +1,11 @@
-package com.zdez.todolist
+package com.zdez.notes
 
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.zdez.todolist.database.NotesDatabase
-import com.zdez.todolist.database.NotesDao
-import com.zdez.todolist.database.Note
+import com.zdez.notes.database.NotesDatabase
+import com.zdez.notes.database.NotesDao
+import com.zdez.notes.database.Note
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -39,10 +39,11 @@ class NotesDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    suspend fun insertAndGetNight() {
+    suspend fun insertAndGetNotes() {
         val note = Note()
+        note.title = "Hello"
         noteDao.insert(note)
-        val tonote = noteDao.getToNote()
-        assertEquals(tonote?.title, "")
+        val toNote = noteDao.getToNote()
+        assertEquals(toNote?.title, "Hello")
     }
 }

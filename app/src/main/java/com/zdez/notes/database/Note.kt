@@ -1,17 +1,17 @@
-package com.zdez.todolist.database
+package com.zdez.notes.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "Notes")
+@Entity(tableName = "notes")
 data class Note(
     @PrimaryKey(autoGenerate = true)
     val noteId: Long = 0L,
 
     @ColumnInfo(name = "title")
-    val title: String = "",
+    var title: String = "",
 
     @ColumnInfo(name = "notes_text")
-    val notesText: String = ""
+    var notesText: String = ""
 )
