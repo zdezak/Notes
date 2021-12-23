@@ -1,5 +1,4 @@
 # Notes
-[Apk](https://disk.yandex.ru/d/Gxn2t8qmylpkYA)
 
 Скриншоты:
 
